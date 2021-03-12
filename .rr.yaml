@@ -1,0 +1,33 @@
+env:
+  APP_RUNNING_IN_CONSOLE: false
+  #APP_REFRESH: true
+
+http:
+  address: 0.0.0.0:8080
+  workers:
+    #command: 'sh ./vendor/bin/rr-worker' # for windows: `php vendor/spiral/roadrunner-laravel/bin/rr-worker`
+    command: 'php bin/console baldinof:roadrunner:worker'
+    relay: "tcp://localhost:7000"
+    pool:
+      # near production config
+      #numWorkers: 4
+      #maxJobs: 64 # jobs limitation is important
+      # dev config
+      numWorkers: 1
+      maxJobs: 1
+
+static:
+  dir: 'public'
+
+#reload:
+#  # refresh internval (default 1s)
+#  interval: 1s
+#  # file extensions to watch, defaults to [.php]
+#  patterns: [ ".php" ]
+#  # list of services to watch
+#  services:
+#    http:
+#      # list of dirs, "" root
+#      dirs: [ "" ]
+#      # include sub directories
+#      recursive: true

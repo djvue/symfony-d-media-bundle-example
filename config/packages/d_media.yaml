@@ -1,0 +1,8 @@
+d_media:
+    filterable_entities:
+        - workspace
+    storage:
+        public_url: /storage/medias
+        directory: /uploads
+    library:
+        image_extensions: png, jpg, jpeg, webp

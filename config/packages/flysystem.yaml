@@ -1,0 +1,18 @@
+# Read the documentation at https://github.com/thephpleague/flysystem-bundle/blob/master/docs/1-getting-started.md
+flysystem:
+    storages:
+        medias.storage:
+            adapter: 'local'
+            options:
+                directory: '%kernel.project_dir%/var/storage/medias'
+
+            # can add AWS disk if need
+            #adapter: 'asyncaws'
+            #options:
+            #    client: 'app.async_aws_s3_client' # The service ID of the AsyncAws\S3\S3Client instance
+            #    bucket: 'conceptor'
+                #prefix: 'optional/path/prefix'
+        default.storage:
+            adapter: 'local'
+            options:
+                directory: '%kernel.project_dir%/var/storage/default'

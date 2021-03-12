@@ -1,0 +1,18 @@
+d_media:
+    storage:
+        public_url: 'http://conceptor.local/'
+
+services:
+    _defaults:
+        public: true
+#    Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface:
+#        public: true
+
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver: pdo_sqlite
+                path: '%kernel.cache_dir%/test.db'
+                memory: true

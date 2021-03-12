@@ -1,0 +1,31 @@
+include:
+  - project: 'ggpa/ci-templates'
+    ref: master
+    file: 'backend-rr-tpl.yml'
+
+analyse:
+  extends:
+    - analyse_template
+  only:
+    - develop
+    - master
+
+unit_symfony:
+  extends:
+    - unit_symfony_template
+  only:
+    - develop
+    - master
+  script:
+    - chmod -R +x bin
+    #- APP_ENV=prod APP_DEBUG=0 php bin/console lint:twig templates
+    - APP_ENV=prod APP_DEBUG=0 php bin/console lint:container
+    - ./vendor/bin/simple-phpunit
+
+deploy_develop:
+  extends:
+    - deploy_develop_template
+  only:
+    - master
+  variables:
+    D_DIR: /var/www/projects/d-media-bundle-example

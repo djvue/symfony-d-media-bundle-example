@@ -1,0 +1,64 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    App\Http\RequestDTOResolver:
+        arguments:
+            - '@validator'
+        tags:
+            - { name: controller.request_value_resolver, priority: 50 }
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    Spiral\Goridge\RelayInterface:
+        class: 'Spiral\Goridge\SocketRelay'
+        arguments:
+            - localhost
+            - 7000
+
+    App\EventListener\RequestListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request }
+
+    App\EventListener\ExceptionListener:
+        arguments:
+            - '%kernel.debug%'
+            - '@logger'
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+
+    # configure aws disk and uncomment config/packages/flysystem.yaml asyncaws adapter
+    #app.async_aws_s3_client:
+    #    class: AsyncAws\S3\S3Client
+    #    arguments:
+    #        -
+    #            accessKeyId: '%env(AWS_ACCESS_KEY_ID)%'
+    #            accessKeySecret: '%env(AWS_SECRET_ACCESS_KEY)%'
+    #            region: '%env(AWS_DEFAULT_REGION)%'
+    #            endpoint: '%env(AWS_ENDPOINT)%'

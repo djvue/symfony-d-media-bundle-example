@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+chmod -R +x bin
+echo "Executing cache:clear:"
+php bin/console cache:clear
+
+
+# first arg is `-f` or `--some-option`
+if [ "${1#-}" != "$1" ]; then
+	set -- php "$@"
+fi
+
+exec "$@"

@@ -1,0 +1,34 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        login:
+            pattern:  ^/api/auth/login
+            stateless: true
+            anonymous: true
+            json_login:
+                username_path: email
+                check_path: /api/auth/login_check
+                success_handler: Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationSuccessHandler
+                failure_handler: Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationFailureHandler
+
+        refresh:
+            pattern: ^/api/auth/refresh
+            stateless: true
+            anonymous: true
+
+        api:
+            pattern:   ^/api/board
+            stateless: true
+            provider: app_user_provider
+
+        dev:
+            pattern: ^/
+            security: false
