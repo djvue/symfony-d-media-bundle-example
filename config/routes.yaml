@@ -1,5 +1,5 @@
 media:
     resource: '@DMediaBundle/Resources/config/routes/media.yaml'
-    prefix: '/api/board/media'
+    prefix: '/api/media'
     trailing_slash_on_root: false
     name_prefix: board_media_

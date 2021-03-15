@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+{% block body %}
+    <div id="app" class="app">
+        <div class="app__block">
+            <h2 class="app__label"> Single Uploader Component with Manager Popup</h2>
+            <vue-d-media-single-uploader v-model="singleMedias"></vue-d-media-single-uploader>
+        </div>
+        <div class="app__block">
+            <h2 class="app__label">Multi Uploader Component with Manager Popup</h2>
+            <vue-d-media-multi-uploader v-model="multiMedias"></vue-d-media-multi-uploader>
+        </div>
+        <div class="app__block">
+            <h2 class="app__label">Manager Popup Button</h2>
+            <button class="app__button" @click="$refs.managerPopup.open()">Open Manager Popup</button>
+            <vue-d-media-manager-popup ref="managerPopup"></vue-d-media-manager-popup>
+        </div>
+        <div class="app__block">
+            <h2 class="app__label">Inlined Manager Component</h2>
+            <vue-d-media-manager class="app__manager" bordered :entities="entities"></vue-d-media-manager>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}

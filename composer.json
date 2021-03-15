@@ -5,18 +5,6 @@
     "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../packages/d-media-bundle",
-            "options": {
-                "versions": {
-                    "symlink": false,
-                    "djvue/d-media-bundle": "dev-master"
-                }
-            }
-        }
-    ],
     "require": {
         "php": ">=8.0",
         "ext-ctype": "*",
@@ -26,7 +14,7 @@
         "async-aws/s3": "^1.8",
         "baldinof/roadrunner-bundle": "^1.4",
         "composer/package-versions-deprecated": "1.11.99.1",
-        "djvue/d-media-bundle": "dev-master",
+        "djvue/d-media-bundle": "^0.8",
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
@@ -48,6 +36,7 @@
         "symfony/serializer": "5.2.*",
         "symfony/twig-bundle": "5.2.*",
         "symfony/validator": "5.2.*",
+        "symfony/webpack-encore-bundle": "^1.11",
         "symfony/yaml": "5.2.*"
     },
     "require-dev": {

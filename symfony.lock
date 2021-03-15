@@ -292,6 +292,9 @@
             "config/packages/stof_doctrine_extensions.yaml"
         ]
     },
+    "symfony/asset": {
+        "version": "v5.2.4"
+    },
     "symfony/browser-kit": {
         "version": "v5.2.3"
     },
@@ -465,6 +468,12 @@
     "symfony/process": {
         "version": "v5.2.3"
     },
+    "symfony/property-access": {
+        "version": "v5.2.4"
+    },
+    "symfony/property-info": {
+        "version": "v5.2.4"
+    },
     "symfony/proxy-manager-bridge": {
         "version": "v5.2.3"
     },
@@ -485,8 +494,29 @@
             "./config/routes.yaml"
         ]
     },
+    "symfony/security-bundle": {
+        "version": "5.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.1",
+            "ref": "0a4bae19389d3b9cba1ca0102e3b2bccea724603"
+        },
+        "files": [
+            "config/packages/security.yaml"
+        ]
+    },
     "symfony/security-core": {
         "version": "v5.2.3"
+    },
+    "symfony/security-csrf": {
+        "version": "v5.2.4"
+    },
+    "symfony/security-guard": {
+        "version": "v5.2.4"
+    },
+    "symfony/security-http": {
+        "version": "v5.2.5"
     },
     "symfony/serializer": {
         "version": "v5.2.3"
@@ -554,6 +584,28 @@
     },
     "symfony/var-exporter": {
         "version": "v5.2.3"
+    },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.9",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.9",
+            "ref": "9399a0bfc6ee7a0c019f952bca46d6a6045dd451"
+        },
+        "files": [
+            "assets/app.js",
+            "assets/bootstrap.js",
+            "assets/controllers.json",
+            "assets/controllers/hello_controller.js",
+            "assets/styles/app.css",
+            "config/packages/assets.yaml",
+            "config/packages/prod/webpack_encore.yaml",
+            "config/packages/test/webpack_encore.yaml",
+            "config/packages/webpack_encore.yaml",
+            "package.json",
+            "webpack.config.js"
+        ]
     },
     "symfony/yaml": {
         "version": "v5.2.3"
