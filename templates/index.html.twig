@@ -25,6 +25,7 @@
     } %}
     {# managerConfig.api.repository: new ApiRepository(apiConfig), #}
     <div id="app" class="app">
+        <h1 class="app__main-title">D-Media package</h1>
         <div class="app__block">
             <h2 class="app__label"> Single Uploader Component with Manager Popup</h2>
             <vue-d-media-single-uploader v-model="singleMedias" :config="{{ managerConfig|json_encode }}"></vue-d-media-single-uploader>
