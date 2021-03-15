@@ -1,12 +1,10 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import * as VueDMedia from 'vue-d-media'
+import VueDMedia from 'vue-d-media'
 import en from 'vue-d-media/lib/lang/en'
 import ru from 'vue-d-media/lib/lang/ru'
 
 Vue.config.productionTip = false
-
-console.log(VueDMedia)
 
 Vue.use(VueDMedia)
 
@@ -52,4 +50,10 @@ const i18n = new VueI18n({
 
 new Vue({
   i18n,
+  data() {
+    return {
+      singleMedias: window.__data.singleMedias,
+      multiMedias: window.__data.multiMedias,
+    }
+  },
 }).$mount('#app')

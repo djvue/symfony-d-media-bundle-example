@@ -2,10 +2,6 @@
 
 namespace App\Security;
 
-use App\Entity\User;
-use App\Entity\Workspace;
-use App\Entity\WorkspaceUser;
-use App\Repository\WorkspaceUserRepository;
 use Djvue\DMediaBundle\Entity\Media;
 use Djvue\DMediaBundle\Security\MediaPermissions;
 use Djvue\DMediaBundle\Service\MediaEntityService;
@@ -46,10 +42,11 @@ class MediaVoter extends Voter
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
     {
         switch ($attribute) {
-            case self::VIEW:
+            case MediaPermissions::UPLOAD:
+            case MediaPermissions::VIEW:
                 return true;
-            case self::EDIT:
-            case self::DELETE:
+            case MediaPermissions::EDIT:
+            case MediaPermissions::DELETE:
                 $entityHasMedias = $this->mediaEntityService->getEntitiesOfType($subject, 'workspace');
                 foreach ($entityHasMedias as $entityHasMedia) {
                     if ($entityHasMedia->getEntityId() === 1) {

@@ -5,27 +5,51 @@
 {% endblock %}
 
 {% block body %}
+    {% set managerConfig = {
+        types: ['images', 'files'],
+        accept: {
+            images: '.svg, .jpg, .jpeg, .gif, .png, .webp',
+            files: '.pdf, .xls, .xlsx, .doc, .docx, .txt, .xml'
+        },
+        entities: entities,
+        hiddenEntities: {},
+        filterLimit: 28,
+        maxFiles: 6,
+        maxFilesize: 100,
+        api: {
+            config: {
+                prefix: '/api/media',
+                headers: {},
+            },
+        },
+    } %}
+    {# managerConfig.api.repository: new ApiRepository(apiConfig), #}
     <div id="app" class="app">
         <div class="app__block">
             <h2 class="app__label"> Single Uploader Component with Manager Popup</h2>
-            <vue-d-media-single-uploader v-model="singleMedias"></vue-d-media-single-uploader>
+            <vue-d-media-single-uploader v-model="singleMedias" :config="{{ managerConfig|json_encode }}"></vue-d-media-single-uploader>
         </div>
         <div class="app__block">
             <h2 class="app__label">Multi Uploader Component with Manager Popup</h2>
-            <vue-d-media-multi-uploader v-model="multiMedias"></vue-d-media-multi-uploader>
+            <vue-d-media-multi-uploader v-model="multiMedias" :config="{{ managerConfig|json_encode }}"></vue-d-media-multi-uploader>
         </div>
         <div class="app__block">
             <h2 class="app__label">Manager Popup Button</h2>
             <button class="app__button" @click="$refs.managerPopup.open()">Open Manager Popup</button>
-            <vue-d-media-manager-popup ref="managerPopup"></vue-d-media-manager-popup>
+            <vue-d-media-manager-popup ref="managerPopup" :config="{{ managerConfig|json_encode }}"></vue-d-media-manager-popup>
         </div>
         <div class="app__block">
             <h2 class="app__label">Inlined Manager Component</h2>
-            <vue-d-media-manager class="app__manager" bordered :entities="entities"></vue-d-media-manager>
+            <vue-d-media-manager class="app__manager" bordered :config="{{ managerConfig|json_encode }}"></vue-d-media-manager>
         </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
+    <script>
+        window.__data = window.__data || {};
+        window.__data.singleMedias = {{ singleMedias|json_encode|raw }};
+        window.__data.multiMedias = {{ multiMedias|json_encode|raw }};
+    </script>
     {{ encore_entry_script_tags('app') }}
 {% endblock %}

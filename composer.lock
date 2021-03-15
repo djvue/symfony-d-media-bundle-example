@@ -408,16 +408,16 @@
         },
         {
             "name": "djvue/d-media-bundle",
-            "version": "0.8.1",
+            "version": "0.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/djvue/d-media-bundle.git",
-                "reference": "77da0c6655e5195ffce09470a3184344e9ec124b"
+                "reference": "69e21c8a2984fa36e23f8105994c099055319200"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/djvue/d-media-bundle/zipball/77da0c6655e5195ffce09470a3184344e9ec124b",
-                "reference": "77da0c6655e5195ffce09470a3184344e9ec124b",
+                "url": "https://api.github.com/repos/djvue/d-media-bundle/zipball/69e21c8a2984fa36e23f8105994c099055319200",
+                "reference": "69e21c8a2984fa36e23f8105994c099055319200",
                 "shasum": ""
             },
             "require": {
@@ -468,9 +468,9 @@
             "description": "Symfony bundle for d-media package",
             "support": {
                 "issues": "https://github.com/djvue/d-media-bundle/issues",
-                "source": "https://github.com/djvue/d-media-bundle/tree/0.8.1"
+                "source": "https://github.com/djvue/d-media-bundle/tree/0.8.5"
             },
-            "time": "2021-03-15T00:24:49+00:00"
+            "time": "2021-03-15T14:20:39+00:00"
         },
         {
             "name": "doctrine/annotations",
